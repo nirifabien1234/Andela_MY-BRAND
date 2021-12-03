@@ -342,4 +342,59 @@
         padding: 4px;
         border-radius: 5px;
     }
-  
+
+
+
+  /* STYLES FOR CONTACT PAGE */
+  .contact-container{
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      width: 60%;
+      margin-top: 30px;
+      
+  }
+  .field{
+      padding: 10px;
+      margin: 6px;
+      border: none;
+      background-color: var(--teritiary_white);
+      border-radius: 10px;
+  }
+  .own{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+  }
+  .area{
+      height: 200px;
+  }
+  .btn-contact{
+      align-items: flex-end;
+  }
+  .social-icon{
+      margin: 5px;
+      width: 30px
+  }
+  .footer{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: nowrap;
+      padding: 10px;
+  }
+  .footer p{
+    color: var(--teritiary_gray);
+
+}
+.footer h4{
+    padding: 10px;
+    color: var(--seconary);
+    
+}
+.copyright{
+    font-size: 15px;
+    
+}
