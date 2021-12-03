@@ -373,3 +373,28 @@
   .btn-contact{
       align-items: flex-end;
   }
+  .social-icon{
+      margin: 5px;
+      width: 30px
+  }
+  .footer{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: nowrap;
+      padding: 10px;
+  }
+  .footer p{
+    color: var(--teritiary_gray);
+
+}
+.footer h4{
+    padding: 10px;
+    color: var(--seconary);
+    
+}
+.copyright{
+    font-size: 15px;
+    
+}
