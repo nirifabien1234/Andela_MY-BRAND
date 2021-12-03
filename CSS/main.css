@@ -304,6 +304,7 @@
         width: 259px;
         border-radius: 21px;
         align-self: normal;
+       
         
 
     }
@@ -332,3 +333,13 @@
         border-radius: 21px 21px 0 0;
 
     }
+    .card a{
+        color: var(--seconary);
+    }
+    .card a:hover{
+        color: var(--teritiary_white);
+        background-color: var(--seconary);
+        padding: 4px;
+        border-radius: 5px;
+    }
+  
