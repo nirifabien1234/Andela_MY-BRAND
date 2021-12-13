@@ -19,12 +19,34 @@
         <li><a href="#services">Services</a></li>
         <li><a href="#portifolio">Portifolio</a></li>
         <li><a href="#about">About</a></li>
+        <li><a href="Html/blog.html">Blog</a></li>
         <li><a href="#contact">Contact</a></li>
+        <li><a class="display-login-modal" href="">Login</a></li>
         
     </ul>
+    <div class="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </div>
+    
    
 </nav>
+<!--Login model-->
 
+<div class="modal" id="login-modal">
+    <div class="login-container modal-content ">
+        
+        <img src="../Assets/avator.png" alt="avator">
+        <p >Login here to continue</p>
+        <input type="text" class="field" placeholder=" Enter your email">
+        <input type="text" class="field" placeholder="Password">
+        <button class="login"><a href="dashboard.html">Login</a></button>
+        <a href="reset.html">Forgot password?</a>
+
+    
+    </div>
+</div>
     
 <!-- CONTAINER FOR HOMEPAGE CONTENT-->
 <div class="flex-container" id="home"> 
@@ -48,22 +70,20 @@
     </div>
 
     <div class="who_am_i"> 
-        <p class="intro">Hi, I am</P> 
-        <p class="intro">Cryptotearer</P> <br/>
+        <p class="intro head">Hi, I am</P> 
+        <p class="intro head">Cryptotearer</P> <br/>
         <p class="intro message">Professional web designer, Backend developer, and more. Always striving for our customers satisfaction. <br/> <br/>
             I  look forwards to work with you!</p>
         <input class="learn_more" type="button" value="Learn more"></input>
     </div>
 
     <div class="social">
-        <img class="social-icon"src="Assets/youtube.png" alt="youtube">
+        
         <img class="social-icon"src="Assets/twitter.png" alt="twitter">
         <a href="https://www.facebook.com/fabien.niringiyimana"><img class="social-icon"src="Assets/facebook.png" alt="facebook"></a>
         <img class="social-icon"src="Assets/instagram.png" alt="instagram">
         <img class="social-icon"src="Assets/linkedin.png" alt="telegram">
-        <img class="social-icon"src="Assets/telegram.png" alt="location">
-        <img class="social-icon"src="Assets/whatsap.png" alt="whatsapp">
-        <img class="social-icon"src="Assets/placeholder.png" alt="location">
+        
 
     </div>
 </div>
@@ -135,7 +155,6 @@
                         <div id="percent">
                             65%
                         </div>
-
                     </div>
                 </div>
 
@@ -441,7 +460,7 @@
         </div>
         
     </div>
-    <input class="learn_more" type="button" value="Hire me"></input>
+    
 
    
 </div>
@@ -515,7 +534,7 @@
             </div>
         </div>
     </div>
-    <input class="learn_more" type="button" value="Hire me"></input>
+  
 </div>
 
 
@@ -567,7 +586,7 @@
             </div>
         </div>
     </div>
-    <input class="learn_more" type="button" value="Hire me"></input>
+    
 </div>
 <hr>
 
@@ -582,56 +601,57 @@
     <div class="contact-container">
         <input type="text" class="field" placeholder="First Name">
         <input type="text" class="field" placeholder="Last Name">
-        <input type="text" class="field" placeholder=" Entery your email">
+        <input type="text" class="field" placeholder=" Enter your email">
         <input type="text" class="field" placeholder="Subject">
         <textarea placeholder="Type all you want us to hear here!" class="field area"></textarea>
-        <button class="learn_more btn-contact">submit</button>
+        <p><button class="learn_more btn-contact">submit</button></p>
     </div>
 </div>
 
 
 
 
-<hr>
+<hr class="bottom-hr">
 
 <div class="footer">
+    <div class="sub-footer">
     <h4>Contacts</h4>
     <p>email: cryptotearer@gmail.com</p>
     <p>phone: +250 785 571 149</p>
-    <div class="social">
-        <img class="social-icon"src="Assets/youtube.png" alt="youtube">
-        <img class="social-icon"src="Assets/twitter.png" alt="twitter">
-        <a href="https://www.facebook.com/fabien.niringiyimana"><img class="social-icon"src="Assets/facebook.png" alt="facebook"></a>
-        <img class="social-icon"src="Assets/instagram.png" alt="instagram">
-        <img class="social-icon"src="Assets/linkedin.png" alt="telegram">
-        <img class="social-icon"src="Assets/telegram.png" alt="location">
-        <img class="social-icon"src="Assets/whatsap.png" alt="whatsapp">
-        <img class="social-icon"src="Assets/placeholder.png" alt="location">
-
-    </div>
+    
     <p class="copyright">&copy Cryptotearer All righs Reserved.  Designed by Cryptotearer</p>
-
+</div>
+    <input class="learn_more" type="button" value="Hire me"></input>
 </div>
 
 
+<!------------------------------------FIREBASE SECTION------------------------------> 
 
-
-
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
 <script>
-    let percent = document.getElementById("percent");
-    let counter = 0;
-    setInterval(() => {
-        if(counter == 65){
-            clearInterval()
-        }
-        else{
-            counter += 1;
-            percent.innerHTML = counter + "%";
-        }
-       
-    }, 30)
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCq34tnBxDQU25c67eM9vYWYaeH6yTvR2I",
+      authDomain: "my-brand-cryptotearer.firebaseapp.com",
+      databaseURL: "https://my-brand-cryptotearer-default-rtdb.firebaseio.com",
+      projectId: "my-brand-cryptotearer",
+      storageBucket: "my-brand-cryptotearer.appspot.com",
+      messagingSenderId: "326815881700",
+      appId: "1:326815881700:web:012e54175620b017914ff1",
+      measurementId: "${config.measurementId}"
+    };
+  
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore()
+  </script>
 
 
-</script>
+<script src="firebase.js"></script>
+<script src="app.js"></script>
+<script type="text/javascript" src="js/all.js"></script>
 </body>
 </html>
