@@ -5,23 +5,54 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../CSS/login.css" type="text/css">
-    <link rel="stylesheet" href="CSS/main.css" type="text/css">
+    <link rel="stylesheet" href="../CSS/main.css" type="text/css">
     <title>Login</title>
     
     
 </head>
 <body>
-    <div class="login-container">
-        
-            <img src="../Assets/avator.png" alt="avator">
-            <p >Login here to continue</p>
-            <input type="text" class="field" placeholder=" Enter your email">
-            <input type="text" class="field" placeholder="Password">
-            <button class="login"><a href="dashboard.html">Login</a></button>
-            <a href="reset.html">Forgot password?</a>
+    <!-- NAVIGATION BAR-->
 
+<nav>  
+    <a href="../index.html"><div id="logo">Cryptotearer</div></a>
+    
+    <ul class="nav_list">
+        <li id="active"><a href="../index.html">Home</a></li>
+        <li><a href="../index.html#services">Services</a></li>
+        <li><a href="../index.html#portifolio">Portifolio</a></li>
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="./blog.html">Blog</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+       
         
+    </ul>
+    <div class="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
     </div>
     
+   
+</nav>
+
+<form class="login-container" id="login-form">        
+        <img src="../Assets/avator.png" alt="avator">
+        <p >Login here to continue</p>
+        <input type="text" class="field" id="emailLogin" name="email" placeholder=" Enter your email">
+        <small id="small6"></small>
+        <input type="text" class="field" id="passwordLogin" name="password" placeholder="Password">
+        <small id="small7"></small>
+        <button type="submit" class=" login loginBtn">Login</a></button>
+        <a href="reset.html">Forgot password?</a>       
+</form>
+
+
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+<script type="text/javascript" src="../js/login_validation.js"></script>
+<script type="text/javascript" src="../js/hamburger.js"></script>
+<script type="text/javascript" src="../js/firebase-config.js"></script>
 </body>
 </html>

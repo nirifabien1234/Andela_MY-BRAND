@@ -31,7 +31,7 @@
         list-style: none;
        
     }
-
+  
 
     /* NAVBAR STYLING STARTS */
     
@@ -327,7 +327,10 @@ h2 {
     border-radius: 50%;
     background-color: var(--skills-bacground-color);
 }
-#percent{
+#percent, #percent1, #percent2, #percent3, 
+#percent4, #percent5, #percent6, #percent7,
+#percent8, #percent9, #percent10, #percent11,
+#percent12, #percent13, #percent14, #percent15{
     font-weight: 600px;
     color: #5042EC;
     background-color: inherit;
@@ -441,6 +444,41 @@ p.name{
 
 
 /* STYLES FOR CONTACT PAGE well */
+.form-control small{
+    visibility: hidden;
+
+
+}
+.form-control .success input{
+    border: 2px solid var(--seconary);
+}
+.form-control small .error{
+    border: 2px solid tomato;
+    background-color: inherit;
+}
+.form-control .error{
+    visibility: visible;
+    background-color: inherit;
+}
+input.errorBorder{
+    border: 2px solid tomato;
+}
+input.successBorder{
+    border: 3px solid #42f551;
+}
+
+textarea.errorBorder{
+    border: 2px solid tomato;
+}
+textarea.successBorder{
+    border: 3px solid #42f551;
+}
+
+
+.error{
+    color: tomato;
+    padding-left: 1rem;
+}
 .contact-container{
     display: flex;
     justify-content: center;
@@ -452,7 +490,7 @@ p.name{
     padding: 10px;
     margin: 6px;
     border: none;
-    background-color: var(--teritiary_white);
+    background-color: var(--teritiary_gray);
     border-radius: 10px;
 }
 .own{
@@ -705,13 +743,20 @@ p.name{
         transition: 0.3s;
         box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
     }
-    ul.nav_list li{
+
+    ul.nav_list{
         margin: none;
+        background-color: var(--primary);
+    }
+    ul.nav_list li{
+    margin: none;
+    background-color: var(--primary);
+    
     }
     ul.nav_list li a{
-        
-        display: block;
-        margin: none;
+    text-align: center;
+    display: block;
+    margin: none;
     }
 
 

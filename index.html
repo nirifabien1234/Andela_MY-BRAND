@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cryptotearer</title>
     <link rel="stylesheet" href="CSS/main.css" type="text/css">
+    <!--<link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">-->
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->  
 </head>
 <body>
 
@@ -21,7 +23,7 @@
         <li><a href="#about">About</a></li>
         <li><a href="Html/blog.html">Blog</a></li>
         <li><a href="#contact">Contact</a></li>
-        <li><a class="display-login-modal" href="">Login</a></li>
+        <li><a href="html/login.html">Login</a></li>
         
     </ul>
     <div class="hamburger">
@@ -32,21 +34,7 @@
     
    
 </nav>
-<!--Login model-->
 
-<div class="modal" id="login-modal">
-    <div class="login-container modal-content ">
-        
-        <img src="../Assets/avator.png" alt="avator">
-        <p >Login here to continue</p>
-        <input type="text" class="field" placeholder=" Enter your email">
-        <input type="text" class="field" placeholder="Password">
-        <button class="login"><a href="dashboard.html">Login</a></button>
-        <a href="reset.html">Forgot password?</a>
-
-    
-    </div>
-</div>
     
 <!-- CONTAINER FOR HOMEPAGE CONTENT-->
 <div class="flex-container" id="home"> 
@@ -96,7 +84,7 @@
     <div id="about" class="about-me"> 
         <h2>About Me</h2>
         <p>I am by real name called Fabien NIRINGIYIMANA, who is highly known as Cryptotearer,
-           and I really can’t wait to serve you! <br>
+           and I really cannot wait to serve you! <br>
            I know you have come a long way searching for someone who can make your desires come true, but now take a breathe you’ve finally found one. I am your answer!
         </p>
     </div>
@@ -130,7 +118,7 @@
             <div class="skill">
                 <div class="outer">
                     <div class="inner">
-                        <div id="percent">
+                        <div id="percent1">
                             65%
                         </div>
 
@@ -152,7 +140,7 @@
             <div class="skill">
                 <div class="outer">
                     <div class="inner">
-                        <div id="percent">
+                        <div id="percent2">
                             65%
                         </div>
                     </div>
@@ -173,7 +161,7 @@
             <div class="skill">
                 <div class="outer">
                     <div class="inner">
-                        <div id="percent">
+                        <div id="percent3">
                             65%
                         </div>
 
@@ -195,7 +183,7 @@
             <div class="skill">
                 <div class="outer">
                     <div class="inner">
-                        <div id="percent">
+                        <div id="percent4">
                             65%
                         </div>
 
@@ -217,7 +205,7 @@
             <div class="skill">
                 <div class="outer">
                     <div class="inner">
-                        <div id="percent">
+                        <div id="percent5">
                             65%
                         </div>
 
@@ -239,7 +227,7 @@
             <div class="skill">
                 <div class="outer">
                     <div class="inner">
-                        <div id="percent">
+                        <div id="percent6">
                             65%
                         </div>
 
@@ -261,7 +249,7 @@
             <div class="skill">
                 <div class="outer">
                     <div class="inner">
-                        <div id="percent">
+                        <div id="percent7">
                             65%
                         </div>
 
@@ -283,7 +271,7 @@
             <div class="skill">
                 <div class="outer">
                     <div class="inner">
-                        <div id="percent">
+                        <div id="percent8">
                             65%
                         </div>
 
@@ -305,7 +293,7 @@
             <div class="skill">
                 <div class="outer">
                     <div class="inner">
-                        <div id="percent">
+                        <div id="percent9">
                             65%
                         </div>
 
@@ -327,7 +315,7 @@
             <div class="skill">
                 <div class="outer">
                     <div class="inner">
-                        <div id="percent">
+                        <div id="percent10">
                             65%
                         </div>
 
@@ -349,7 +337,7 @@
             <div class="skill">
                 <div class="outer">
                     <div class="inner">
-                        <div id="percent">
+                        <div id="percent11">
                             65%
                         </div>
 
@@ -371,7 +359,7 @@
             <div class="skill">
                 <div class="outer">
                     <div class="inner">
-                        <div id="percent">
+                        <div id="percent12">
                             65%
                         </div>
 
@@ -393,7 +381,7 @@
             <div class="skill">
                 <div class="outer">
                     <div class="inner">
-                        <div id="percent">
+                        <div id="percent13">
                             65%
                         </div>
 
@@ -415,7 +403,7 @@
             <div class="skill">
                 <div class="outer">
                     <div class="inner">
-                        <div id="percent">
+                        <div id="percent14">
                             65%
                         </div>
 
@@ -437,7 +425,7 @@
             <div class="skill">
                 <div class="outer">
                     <div class="inner">
-                        <div id="percent">
+                        <div id="percent15">
                             65%
                         </div>
 
@@ -598,14 +586,27 @@
         
     </div>
 
-    <div class="contact-container">
-        <input type="text" class="field" placeholder="First Name">
-        <input type="text" class="field" placeholder="Last Name">
-        <input type="text" class="field" placeholder=" Enter your email">
-        <input type="text" class="field" placeholder="Subject">
-        <textarea placeholder="Type all you want us to hear here!" class="field area"></textarea>
-        <p><button class="learn_more btn-contact">submit</button></p>
-    </div>
+    <form class="contact-container" id="form">
+       
+            <input type="text" class="field" id="firstName" name="firstName" placeholder="First Name">
+			<small id="small1"></small>
+
+            <input type="text" class="field" id="lastName" name="lastName" placeholder="Last Name">
+			
+			<small id="small2"></small>
+		
+            <input type="text" class="field" id="email" name="email" placeholder=" Enter your email">
+			<small id="small3"></small>
+		
+            <input type="text" class="field" id="subject" name="subject" placeholder="Subject">
+			<small id="small4"></small>
+		
+            <textarea placeholder="Type all you want us to hear here!" id="message" name="message" class="field area"></textarea>
+            
+			<small id="small5"></small>
+		
+        <button type="submit" id="submitBtn" class="learn_more btn-contact">Submit</button>
+    </form>
 </div>
 
 
@@ -631,27 +632,12 @@
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-<script>
-
-    const firebaseConfig = {
-      apiKey: "AIzaSyCq34tnBxDQU25c67eM9vYWYaeH6yTvR2I",
-      authDomain: "my-brand-cryptotearer.firebaseapp.com",
-      databaseURL: "https://my-brand-cryptotearer-default-rtdb.firebaseio.com",
-      projectId: "my-brand-cryptotearer",
-      storageBucket: "my-brand-cryptotearer.appspot.com",
-      messagingSenderId: "326815881700",
-      appId: "1:326815881700:web:012e54175620b017914ff1",
-      measurementId: "${config.measurementId}"
-    };
-  
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-    const db = firebase.firestore()
-  </script>
-
-
-<script src="firebase.js"></script>
-<script src="app.js"></script>
+<!--<script src="https://kit.fontawesome.com/e26766b38d.js" crossorigin="anonymous"></script>-->
 <script type="text/javascript" src="js/all.js"></script>
+<script type="text/javascript" src="js/hamburger.js"></script>
+<script type="text/javascript" src="js/firebase-config.js"></script>
+<script type="text/javascript" src="js/validation.js"></script>
+
+
 </body>
 </html>
