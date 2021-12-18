@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <!--<link rel="stylesheet" href="../CSS/main.css" type="text/css">-->
+    <link rel="stylesheet" href="../CSS/dashboard.css">
+</head>
+<body>
+   
+</script>
+    <div class="dashboard-container">
+        <div class="side-nav">
+
+            <div class="profile"> 
+                <svg class="home__blob" viewBox="0 0 200 187" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <mask id="mask0" mask-type="alpha">
+                        <path d="M190.312 36.4879C206.582 62.1187 201.309 102.826 182.328 134.186C163.346 165.547 
+                        130.807 187.559 100.226 186.353C69.6454 185.297 41.0228 161.023 21.7403 129.362C2.45775 
+                        97.8511 -7.48481 59.1033 6.67581 34.5279C20.9871 10.1032 59.7028 -0.149132 97.9666 
+                        0.00163737C136.23 0.303176 174.193 10.857 190.312 36.4879Z"/>
+                    </mask>
+                    <g mask="url(#mask0)">
+                        <path d="M190.312 36.4879C206.582 62.1187 201.309 102.826 182.328 134.186C163.346 
+                        165.547 130.807 187.559 100.226 186.353C69.6454 185.297 41.0228 161.023 21.7403 
+                        129.362C2.45775 97.8511 -7.48481 59.1033 6.67581 34.5279C20.9871 10.1032 59.7028 
+                        -0.149132 97.9666 0.00163737C136.23 0.303176 174.193 10.857 190.312 36.4879Z"/>
+                        <image class="home__blob-img" xlink:href="../Assets/Profile-image1.png"/>
+                        
+                    </g>
+                </svg>   
+            </div>
+
+            <ul class="nav_list li-flex">
+                
+                <li><span><ion-icon name="stats-chart-outline"></ion-icon></span><a href="dashboard.html">Dashboard</a></li>
+                <li><ion-icon name="construct-outline"></ion-icon><a href="services.html">Manage Services</a></li>
+                <li><span><ion-icon name="briefcase-outline"></ion-icon></span><a href="portifolio.html">Manage Portifolio</a></li>
+                <li ><ion-icon name="newspaper-outline"></ion-icon></span><a href="manage_blog.html"><span>Manage Blog Posts</a></li>
+                <li id="active"><span><ion-icon name="chatbubbles-outline"></ion-icon></span><a href="manage_contact.html">Contact Messages</a></li>
+            </ul>
+            <img class="home__blob-img" href="../Assets/small-blob.png"/>
+        </div>
+        <div class="right">
+
+           <div class="dashboard_nav_container">
+
+                <div class="menu-btn">
+                    <i class="uil uil-bars"></i>   
+                </div>
+
+                <div class="title">
+                    <p>Messages</p>
+                </div>
+                <div class="top-bar-icons">
+
+                    <a href="../index.html"><i class="uil uil-home"></i></a>
+                    <a href="../index.html"><i class="uil uil-bell"></i></a>
+                    <a href="../index.html"><i class="uil uil-cog"></i></a>
+                    <a href="../index.html"><i class="uil uil-user-circle"></i></a>
+                </div>
+            </div>
+
+            <div class="blog_container">
+                <div class="add_article">
+                    
+                    <form class="add_form" id="form">
+
+                        <h3>Reply a person </h3>
+                        <hr>
+   
+                        <input type="text" class="field" id="subject" name="subject" placeholder="Recipient">
+                        <small id="small4"></small>
+                        <div class="browse_div">
+                            <label for="browseBtn">Add image:</label>
+                            <input type="button" value="Browse" id="browseBtn" class=""></input>
+                        </div>
+                       
+                        <textarea placeholder="Type your reply here!" id="message" name="message" class="field area"></textarea>
+                        <small id="small5"></small>
+                        <button type="submit" id="submitBtn" class="">Submit</button>
+                    </form>
+                </div>
+
+                <div class="display_article">
+                    <div class="article">
+                        <h3>Messages</h3>
+                        <hr>
+                    </div>
+
+                </div>
+            </div> 
+
+
+            
+    
+
+        </div>
+    </div>
+</body>
+</html>

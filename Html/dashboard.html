@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <!--<link rel="stylesheet" href="../CSS/main.css" type="text/css">-->
     <link rel="stylesheet" href="../CSS/dashboard.css">
@@ -34,30 +36,36 @@
                 </svg>   
             </div>
 
-            <ul class="nav_list">
-                <li id="active"><a href="#">Dashboard</a></li>
-                <li><a href="#">Manage Services</a></li>
-                <li><a href="#">Manage Portifolio</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Manage Blog Posts</a></li>
-                <li><a href="#">Contact Messages</a></li>
+            <ul class="nav_list li-flex">
+                
+                <li id="active"><span><ion-icon name="stats-chart-outline"></ion-icon></span><a href="dashboard.html">Dashboard</a></li>
+                <li><ion-icon name="construct-outline"></ion-icon><a href="services.html">Manage Services</a></li>
+                <li ><span><ion-icon name="briefcase-outline"></ion-icon></span><a href="portifolio.html">Manage Portifolio</a></li>
+                <li  ><ion-icon name="newspaper-outline"></ion-icon></span><a href="manage_blog.html"><span>Manage Blog Posts</a></li>
+                <li><span><ion-icon name="chatbubbles-outline"></ion-icon></span><a href="manage_contact.html">Contact Messages</a></li>
             </ul>
             <img class="home__blob-img" href="../Assets/small-blob.png"/>
         </div>
         <div class="right">
-           
-            <div class="top-bar-icons">
-                <i class="uil uil-bell"></i>
-                <i class="uil uil-cog"></i>
-                <i class="uil uil-user-circle"></i>
 
+           <div class="dashboard_nav_container">
+
+            <div class="menu-btn">
+                <i class="uil uil-bars"></i>   
             </div>
 
             <div class="title">
                 <p>Dashboard</p>
             </div>
+            <div class="top-bar-icons">
+
+                <a href="../index.html"><i class="uil uil-home"></i></a>
+                <a href="../index.html"><i class="uil uil-bell"></i></a>
+                <a href="../index.html"><i class="uil uil-cog"></i></a>
+                <a href="../index.html"><i class="uil uil-user-circle"></i></a>
+            </div>
+        </div>
         
-            <hr>
 
             <div class="row">
                 <div class="card">
