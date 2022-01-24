@@ -9,12 +9,19 @@ import contactRoute from './routes/contactRoute.js';
 import categoryRoute from './routes/categoryRoute.js';
 import profileRoute from './routes/profileRoute.js';
 import { verifyToken, verifyTokenAndAuthorization, verifyTokenAndAdmin} from './middlewares/verifyToken.js';
+// add this line below the other import statements
+import helmet from 'helmet'
+
+import compression from 'compression'
 
 
 
 const app = express()
 app.use(json());
 app.use(cookieParser());
+app.use(helmet());
+// add this below app.use(helmet())
+app.use(compression()); //Compress all routes
 // dotenv.config()
 
 // connect('mongodb://localhost/capstone2')
@@ -24,7 +31,12 @@ app.use(cookieParser());
 
 let dev_db_url = 'mongodb+srv://Cryptotearer:fabien123@andela.pqdar.mongodb.net/capstone?retryWrites=true&w=majority'
 connect(process.env.MONGO_URL || dev_db_url , {   
-    useUnifiedTopology: true, useNewUrlParser: true, useUnifiedTopology: true 
+    useFindAndModify: false,
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    server: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } },
+    replset: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } },
 }).then(console.log("Connected to MongoDB")).
 catch((err) => console.log(err));
 
