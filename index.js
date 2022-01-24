@@ -17,11 +17,18 @@ app.use(json());
 app.use(cookieParser());
 // dotenv.config()
 
-connect('mongodb://localhost/capstone2')
-    .then(() => console.log('Connected to mongoDB'))
-    .catch(err => console.error('Could not connect to MongoDBNamespace...', err));
+// connect('mongodb://localhost/capstone2')
+//     .then(() => console.log('Connected to mongoDB'))
+//     .catch(err => console.error('Could not connect to MongoDBNamespace...', err));
+// Set up mongoose connection
 
-app.listen(5000, () => console.log("Listening on port 3000..."))
+let dev_db_url = 'mongodb+srv://Cryptotearer:fabien123@andela.pqdar.mongodb.net/capstone?retryWrites=true&w=majority'
+connect(process.env.MONGO_URL || dev_db_url , {   
+    useUnifiedTopology: true, useNewUrlParser: true, useUnifiedTopology: true 
+}).then(console.log("Connected to MongoDB")).
+catch((err) => console.log(err));
+
+app.listen(process.env.PORT || 3000)
 
 
 //All Routers
