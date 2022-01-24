@@ -21,6 +21,9 @@
   "version": "1.0.0",
   "type": "module",
   "main": "index.js",
+  "engines": {
+    "node": "16.x"
+  },
   "scripts": {
     "build": "babel index.js -d dist",
     "start": "npm run build && node dist/index.js",
