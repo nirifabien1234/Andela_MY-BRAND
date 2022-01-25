@@ -1,15 +1,49 @@
 import Post from '../models/Post.js';
+import { v2 as cloudinary } from 'cloudinary';
+import 'dotenv/config';
+import * as fs from 'fs';
 
 //Create Post
-export async function createPost (req, res){
-    const newPost = new Post(req.body);
-    try {
-      const savedPost = await newPost.save();
-      res.status(200).json(savedPost);
-    } catch (err) {
-      res.status(500).json(err);
-    }
+
+
+export async function  createPost (req, res){
+  try {
+      cloudinary.uploader.upload('https://en.wikipedia.org/wiki/Image#/media/File:Image_created_with_a_mobile_phone.png', { tags: 'Post_photo' }, async function (err, image) {
+          if (err) {console.warn(err);}
+          req.body.photo = image.url
+          const article = await Post.create(req.body);
+          fs.unlinkSync(req.file.path)
+          res.status(200).json({message: "Article creatred successfully", article});
+      });
+  } catch (err) {
+      const errors = handleError(err)
+      res.status(409).json({message: errors});
+  }
 }
+
+
+// export function createPost (req, res){
+//   cloudinary.uploader.upload('https://en.wikipedia.org/wiki/Image#/media/File:Image_created_with_a_mobile_phone.png', {tags: 'Post_photo'}, async function(err, image){
+
+//       if(err){console.log(err)};
+//       console.log(image)
+//       req.body.photo = image.url;
+//       const post = await Post.create(req.body);
+//       fs.unlinkSync(req.file.path)
+//       res.status(200).send({message: "post creatred successfully", post: post });
+//   });
+// }
+// createPost();
+
+// export async function createPost (req, res){
+//     const newPost = new Post(req.body);
+//     try {
+//       const savedPost = await newPost.save();
+//       res.status(200).json(savedPost);
+//     } catch (err) {
+//       res.status(500).json(err);
+//     }
+// }
 
 //All posts
 export async function allPosts(req, res){
