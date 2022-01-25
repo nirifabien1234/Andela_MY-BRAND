@@ -1,10 +1,10 @@
 import Category from '../models/Category.js';
 
 // Creating a new category for articles
-export function createCategory  (req, res) {
+export async function createCategory  (req, res) {
   const newCat = new Category(req.body);
   try {
-    const savedCat =  newCat.save();
+    const savedCat = await newCat.save();
     res.status(200).json(savedCat);
   } catch (err) {
     res.status(500).json(err);
@@ -12,9 +12,9 @@ export function createCategory  (req, res) {
 }
 
 // All categories
-export function allCategory (req, res) {
+export async function allCategory (req, res) {
     try {
-      const cats =  Category.find();
+      const cats = await Category.find();
       res.status(200).json(cats);
     } catch (err) {
       res.status(500).json(err);
@@ -22,9 +22,9 @@ export function allCategory (req, res) {
  }
 
 //Category Details
-export function categoryDetails(req, res){
+export async function categoryDetails(req, res){
     try {
-        const category =  Category.findById(req.params.id);
+        const category = await Category.findById(req.params.id);
         res.status(200).json(category);
       } catch (err) {
         res.status(500).json(err);
@@ -32,9 +32,9 @@ export function categoryDetails(req, res){
 }
 
 //Delete category
-export function deleteCategory(req, res){
+export async function deleteCategory(req, res){
     const id = req.params.id;
-    Category.findByIdAndDelete(id)
+    await Category.findByIdAndDelete(id)
       .then(result => {
         res.json({ category: result });
       })
@@ -43,13 +43,13 @@ export function deleteCategory(req, res){
       });
 }
 // UPDATE A category
-export function updateCategory(req, res){
+export async function updateCategory(req, res){
     const id = req.params.id;
     let updatedCategory = {
         name: req.body.name, 
     }
-    Category.findByIdAndUpdate(id, {$set: updatedCategory}).then(()=>{
-        res.json({message:`category updated successfully`});
+    const update = await Category.findByIdAndUpdate(id, {$set: updatedCategory}).then(()=>{
+        res.json({message:`category updated successfully`, update});
     }).catch(err=>{
         res.json({message: err})
     })

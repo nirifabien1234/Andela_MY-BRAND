@@ -1,10 +1,10 @@
 import Contact from '../models/Contact.js';
 
 //Create contact
-export function createMessage (req, res) {
+export async function createMessage (req, res) {
     const newMessage = new Contact(req.body);
     
-       newMessage.save().then((result) => {
+       await newMessage.save().then((result) => {
          res.json(result)
         }).catch((err)=>{
       res.json({newMessage: err})
@@ -12,9 +12,9 @@ export function createMessage (req, res) {
 }
 
 //All Messages
-export function allMessages(req, res){
+export async function allMessages(req, res){
     try {
-        const messages =  Contact.find();
+        const messages = await Contact.find();
         res.status(200).json(messages);
       } catch (err) {
         res.status(500).json(err);
@@ -22,9 +22,9 @@ export function allMessages(req, res){
 }
 
 //Message Details
-export function messageDetails(req, res){
+export async function messageDetails(req, res){
     try {
-        const message =  Contact.findById(req.params.id);
+        const message =  await Contact.findById(req.params.id);
         res.status(200).json(message);
       } catch (err) {
         res.status(500).json(err);
@@ -32,9 +32,9 @@ export function messageDetails(req, res){
 }
 
 //Delete Message
-export function deleteMessage(req, res){
+export async function deleteMessage(req, res){
     try {
-        const message =  Contact.findById(req.params.id);
+        const message = await Contact.findById(req.params.id);
         if (message) {
           try {
              message.delete();

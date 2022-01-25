@@ -1,10 +1,10 @@
 import Profile from '../models/Profile.js';
 
 //Create profile
-export function createProfile (req, res){
+export async function createProfile (req, res){
     const newProfile = new Profile(req.body);
     try {
-      const savedProfile =  newProfile.save();
+      const savedProfile = await newProfile.save();
       res.status(200).json(savedProfile);
     } catch (err) {
       res.status(500).json(err);
@@ -12,9 +12,9 @@ export function createProfile (req, res){
 }
 
 //profile Details
-export function profileDetails(req, res){
+export async function profileDetails(req, res){
     try {
-        const profile =  Profile.findById(req.params.id);
+        const profile = await Profile.findById(req.params.id);
         res.status(200).json(profile);
       } catch (err) {
         res.status(500).json(err);
@@ -22,9 +22,9 @@ export function profileDetails(req, res){
 }
 
 //Delete profile
-export function deleteProfile(req, res){
+export async function deleteProfile(req, res){
     const id = req.params.id;
-    Profile.findByIdAndDelete(id)
+    await Profile.findByIdAndDelete(id)
       .then(result => {
         res.json({ profile: result });
       })
@@ -33,7 +33,7 @@ export function deleteProfile(req, res){
       });
 }
 // UPDATE A profile
-export function updateProfile(req, res){
+export async function updateProfile(req, res){
     const id = req.params.id;
     const updatedProfile = {
         first_name: req.body.first_name,
@@ -41,7 +41,7 @@ export function updateProfile(req, res){
         gender: req.body.gender,
         academic_title: req.body.academic_title
     }
-    Profile.findByIdAndUpdate(id, {$set: updatedProfile}).then(()=>{
+    await Profile.findByIdAndUpdate(id, {$set: updatedProfile}).then(()=>{
         res.json({message:`Profile updated successfully`});
     }).catch(err=>{
         res.json({message: err})

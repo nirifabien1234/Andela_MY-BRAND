@@ -1,10 +1,10 @@
 import Post from '../models/Post.js';
 
 //Create Post
-export function createPost (req, res){
+export async function createPost (req, res){
     const newPost = new Post(req.body);
     try {
-      const savedPost =  newPost.save();
+      const savedPost = await newPost.save();
       res.status(200).json(savedPost);
     } catch (err) {
       res.status(500).json(err);
@@ -12,21 +12,21 @@ export function createPost (req, res){
 }
 
 //All posts
-export function allPosts(req, res){
+export async function allPosts(req, res){
     const newQuery = req.query.new;
   const qCategory = req.query.categories;
   try {
     let posts;
     if (newQuery) {
-      posts =  Post.find().sort({createdAt: -1}).limit(5);
+      posts =  await Post.find().sort({createdAt: -1}).limit(5);
     } else if (qCategory) {
-      posts =  Post.find({
+      posts = await Post.find({
         categories: {
           $in: [qCategory],
         },
       });
     } else {
-      posts =  Post.find();
+      posts = await Post.find();
     }
     res.status(200).json(posts);
   } catch (err) {
@@ -35,9 +35,9 @@ export function allPosts(req, res){
 }
 
 //post Details
-export function postDetails(req, res){
+export async  function postDetails(req, res){
     try {
-        const post =  Post.findById(req.params.id);
+        const post = await Post.findById(req.params.id);
         res.status(200).json(post);
       } catch (err) {
         res.status(500).json(err);
@@ -45,9 +45,9 @@ export function postDetails(req, res){
 }
 
 //Delete post
-export function deletePost(req, res){
+export async function deletePost(req, res){
     const id = req.params.id;
-    Post.findByIdAndDelete(id)
+    await Post.findByIdAndDelete(id)
       .then(result => {
         res.json({ post: result });
       })
@@ -56,7 +56,7 @@ export function deletePost(req, res){
       });
 }
 // UPDATE A POST
-export function updatePost(req, res){
+export async function updatePost(req, res){
     const id = req.params.id;
     let updatedPost = {
         title: req.body.title,
@@ -65,7 +65,7 @@ export function updatePost(req, res){
         categories: req.body.categories,
         
     }
-    Post.findByIdAndUpdate(id, {$set: updatedPost}).then(()=>{
+    await Post.findByIdAndUpdate(id, {$set: updatedPost}).then(()=>{
         res.json({message:`Post updated successfully`});
     }).catch(err=>{
         res.json({message: err})

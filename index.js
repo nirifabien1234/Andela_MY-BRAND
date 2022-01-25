@@ -2,19 +2,19 @@ import express, { json } from 'express';
 import mongoose from 'mongoose';
 const {connect} = mongoose
 import cookieParser from 'cookie-parser'
-
+import dotenv  from "dotenv"
 import postRoute from './routes/postRoute.js';
 import authRoute from './routes/authRoute.js';
 import contactRoute from './routes/contactRoute.js';
 import categoryRoute from './routes/categoryRoute.js';
 import profileRoute from './routes/profileRoute.js';
-import { verifyToken, verifyTokenAndAuthorization, verifyTokenAndAdmin} from './middlewares/verifyToken.js';
+// import { verifyToken, verifyTokenAndAuthorization, verifyTokenAndAdmin} from './middlewares/verifyToken.js';
 // add this line below the other import statements
 import helmet from 'helmet'
 
 import compression from 'compression'
 
-
+dotenv.config()
 
 const app = express()
 app.use(json());
@@ -29,14 +29,14 @@ app.use(compression()); //Compress all routes
 //     .catch(err => console.error('Could not connect to MongoDBNamespace...', err));
 // Set up mongoose connection
 
-let dev_db_url = 'mongodb+srv://Cryptotearer:fabien123@andela.pqdar.mongodb.net/capstone?retryWrites=true&w=majority'
-connect(process.env.MONGO_URL || dev_db_url , {   
-    useFindAndModify: false,
+const uri = String(process.env.MONGO_URL)
+connect(uri, {   
+    // useFindAndModify: false,
     useUnifiedTopology: true,
     useNewUrlParser: true,
-    useCreateIndex: true,
-    server: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } },
-    replset: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } },
+    // useCreateIndex: true,
+    // server: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } },
+    // replset: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } },
 }).then(console.log("Connected to MongoDB")).
 catch((err) => console.log(err));
 
