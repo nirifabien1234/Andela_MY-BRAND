@@ -1,13 +1,17 @@
 import express, { json } from 'express';
 import mongoose from 'mongoose';
-const {connect} = mongoose
-import cookieParser from 'cookie-parser'
-import dotenv  from "dotenv"
+const {connect} = mongoose;
+import cookieParser from 'cookie-parser';
+import dotenv  from "dotenv";
 import postRoute from './routes/postRoute.js';
 import authRoute from './routes/authRoute.js';
 import contactRoute from './routes/contactRoute.js';
 import categoryRoute from './routes/categoryRoute.js';
 import profileRoute from './routes/profileRoute.js';
+import commentRoute from './routes/commentRoute.js';
+import serviceRoute from './routes/serviceRoute.js';
+import projectRoute from './routes/projectRoute.js';
+
 // import { verifyToken, verifyTokenAndAuthorization, verifyTokenAndAdmin} from './middlewares/verifyToken.js';
 // add this line below the other import statements
 import helmet from 'helmet'
@@ -31,12 +35,8 @@ app.use(compression()); //Compress all routes
 
 const uri = String(process.env.MONGO_URL)
 connect(uri, {   
-    // useFindAndModify: false,
     useUnifiedTopology: true,
     useNewUrlParser: true,
-    // useCreateIndex: true,
-    // server: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } },
-    // replset: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } },
 }).then(console.log("Connected to MongoDB")).
 catch((err) => console.log(err));
 
@@ -48,5 +48,8 @@ app.listen(process.env.PORT || 3000)
 app.use('/api/posts',postRoute);
 app.use('/api/messages', contactRoute);
 app.use('/api/profile',profileRoute);
+app.use('/api/comments', commentRoute);
+app.use('/api/projects', projectRoute);
+app.use('/api/services', serviceRoute);
 app.use('/api/categories', categoryRoute);
-app.use('/api', authRoute);
+app.use('/api/user', authRoute);

@@ -1,4 +1,4 @@
-import Post from '../models/Post.js';
+import Service from '../models/Service.js';
 
 import 'dotenv/config';
 import * as fs from 'fs';
@@ -7,14 +7,14 @@ import cloudinary from '../helpers/imageUpload.js';
 //Create Post
 
 
-export async function  createPost (req, res){
+export async function  createService (req, res){
   try {
-      cloudinary.uploader.upload(req.file.path, { tags: 'Post_photo' },async function (err, image) {
+      cloudinary.uploader.upload(req.file.path, { tags: 'Service_photo' },async function (err, image) {
           if (err) {console.warn(err);}
-          req.body.photo = image.url
-          const article = await Post.create(req.body);
+          req.body.ServicePic = image.url
+          const service = await Service.create(req.body);
           fs.unlinkSync(req.file.path)
-          res.status(200).json({message: "Article creatred successfully", article});
+          res.status(200).json({message: "Service creatred successfully", service});
       });
   } catch (err) {
       const errors = handleError(err)
@@ -46,62 +46,55 @@ export async function  createPost (req, res){
 //     }
 // }
 
-//All posts
-export async function allPosts(req, res){
+//All Services
+export async function allServices(req, res){
     const newQuery = req.query.new;
-  const qCategory = req.query.categories;
+  
   try {
-    let posts;
+    let services;
     if (newQuery) {
-      posts =  await Post.find().sort({createdAt: -1}).limit(5);
-    } else if (qCategory) {
-      posts = await Post.find({
-        categories: {
-          $in: [qCategory],
-        },
-      });
-    } else {
-      posts = await Post.find();
+      services =  await Service.find().sort({createdAt: -1}).limit(5);
     }
-    res.status(200).json(posts);
+    else {
+      services = await Service.find();
+    }
+    res.status(200).json(services);
   } catch (err) {
     res.status(500).json(err);
   }
 }
 
 //post Details
-export async  function postDetails(req, res){
+export async  function serviceDetails(req, res){
     try {
-        const post = await Post.findById(req.params.id);
-        res.status(200).json(post);
+        const service = await Service.findById(req.params.id);
+        res.status(200).json(service);
       } catch (err) {
         res.status(500).json(err);
       }
 }
 
 //Delete post
-export async function deletePost(req, res){
+export async function deleteService(req, res){
     const id = req.params.id;
-    await Post.findByIdAndDelete(id)
+    await Service.findByIdAndDelete(id)
       .then(result => {
-        res.json({ post: result });
+        res.json(result);
       })
       .catch(err => {
         console.log(err);
       });
 }
 // UPDATE A POST
-export async function updatePost(req, res){
+export async function updateService(req, res){
     const id = req.params.id;
-    let updatedPost = {
+    let updatedService = {
         title: req.body.title,
-        author: req.body.author,
-        desc: req.body.desc,
-        categories: req.body.categories,
+        service_desc: req.body.service_desc,
         
     }
-    await Post.findByIdAndUpdate(id, {$set: updatedPost}).then(()=>{
-        res.json({message:`Post updated successfully`});
+    await Service.findByIdAndUpdate(id, {$set: updatedService}).then(()=>{
+        res.json({message:`Service updated successfully`});
     }).catch(err=>{
         res.json({message: err})
     })

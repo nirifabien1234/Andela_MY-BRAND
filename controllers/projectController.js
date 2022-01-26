@@ -1,4 +1,4 @@
-import Post from '../models/Post.js';
+import Project from '../models/Project.js';
 
 import 'dotenv/config';
 import * as fs from 'fs';
@@ -7,14 +7,14 @@ import cloudinary from '../helpers/imageUpload.js';
 //Create Post
 
 
-export async function  createPost (req, res){
+export async function  createProject (req, res){
   try {
-      cloudinary.uploader.upload(req.file.path, { tags: 'Post_photo' },async function (err, image) {
+      cloudinary.uploader.upload(req.file.path, { tags: 'Project_photo' },async function (err, image) {
           if (err) {console.warn(err);}
-          req.body.photo = image.url
-          const article = await Post.create(req.body);
+          req.body.projectPic = image.url
+          const project = await Project.create(req.body);
           fs.unlinkSync(req.file.path)
-          res.status(200).json({message: "Article creatred successfully", article});
+          res.status(200).json({message: "Project creatred successfully", project});
       });
   } catch (err) {
       const errors = handleError(err)
@@ -46,62 +46,55 @@ export async function  createPost (req, res){
 //     }
 // }
 
-//All posts
-export async function allPosts(req, res){
+//All projects
+export async function allProjects(req, res){
     const newQuery = req.query.new;
-  const qCategory = req.query.categories;
+  
   try {
-    let posts;
+    let projects;
     if (newQuery) {
-      posts =  await Post.find().sort({createdAt: -1}).limit(5);
-    } else if (qCategory) {
-      posts = await Post.find({
-        categories: {
-          $in: [qCategory],
-        },
-      });
-    } else {
-      posts = await Post.find();
+      projects =  await Project.find().sort({createdAt: -1}).limit(5);
     }
-    res.status(200).json(posts);
+    else {
+      projects = await Project.find();
+    }
+    res.status(200).json(projects);
   } catch (err) {
     res.status(500).json(err);
   }
 }
 
 //post Details
-export async  function postDetails(req, res){
+export async  function projectDetails(req, res){
     try {
-        const post = await Post.findById(req.params.id);
-        res.status(200).json(post);
+        const project = await Project.findById(req.params.id);
+        res.status(200).json(project);
       } catch (err) {
         res.status(500).json(err);
       }
 }
 
 //Delete post
-export async function deletePost(req, res){
+export async function deleteProject(req, res){
     const id = req.params.id;
-    await Post.findByIdAndDelete(id)
+    await Project.findByIdAndDelete(id)
       .then(result => {
-        res.json({ post: result });
+        res.json(result);
       })
       .catch(err => {
         console.log(err);
       });
 }
 // UPDATE A POST
-export async function updatePost(req, res){
+export async function updateProject(req, res){
     const id = req.params.id;
-    let updatedPost = {
+    let updatedProject = {
         title: req.body.title,
-        author: req.body.author,
-        desc: req.body.desc,
-        categories: req.body.categories,
+        project_desc: req.body.project_desc,
         
     }
-    await Post.findByIdAndUpdate(id, {$set: updatedPost}).then(()=>{
-        res.json({message:`Post updated successfully`});
+    await Project.findByIdAndUpdate(id, {$set: updatedProject}).then(()=>{
+        res.json({message:`Project updated successfully`});
     }).catch(err=>{
         res.json({message: err})
     })
