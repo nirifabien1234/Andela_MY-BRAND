@@ -1,7 +1,7 @@
 import { Router } from 'express';
 // import {validatePost} from '../middlewares/postValidation.js';
 const router = Router();
-import { allProjects, createProject, ProjectDetails, deleteProject, updateProject } from '../controllers/projectController.js';
+import { allProjects, createProject, projectDetails, deleteProject, updateProject } from '../controllers/projectController.js';
 
 
 import multer from 'multer'
@@ -24,7 +24,7 @@ router.get('/', allProjects);
 router.post('/', createProject);
 
 // Post Details
-router.get('/:id',ProjectDetails);
+router.get('/:id',projectDetails);
 
 // Delete Projects
 router.delete('/:id', deleteProject);
