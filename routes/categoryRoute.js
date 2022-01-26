@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import authenticate from '../middlewares/authentication.js'
 // import {validateCategory} from '../middlewares/postValidation';
 const router = Router();
 import { allCategory, createCategory, categoryDetails, deleteCategory, updateCategory } from '../controllers/categoryController.js';
@@ -7,15 +8,15 @@ import { allCategory, createCategory, categoryDetails, deleteCategory, updateCat
 router.get('/', allCategory);
 
 // Create Categories
-router.post('/', createCategory);
+router.post('/', authenticate, createCategory);
 
 // Post Details
-router.get('/:id',categoryDetails);
+router.get('/:id',authenticate, categoryDetails);
 
 // Delete Categories
-router.delete('/:id', deleteCategory);
+router.delete('/:id', authenticate, deleteCategory);
 
 // Update Categories
-router.put('/:id', updateCategory);
+router.put('/:id',authenticate, updateCategory);
 
 export default router;

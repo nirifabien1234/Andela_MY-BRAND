@@ -2,23 +2,33 @@ import Post from '../models/Post.js';
 
 import 'dotenv/config';
 import * as fs from 'fs';
+import * as path from 'path'
 import cloudinary from '../helpers/imageUpload.js';
+
+
 
 //Create Post
 
 
 export async function  createPost (req, res){
   try {
-      cloudinary.uploader.upload(req.file.path, { tags: 'Post_photo' },async function (err, image) {
-          if (err) {console.warn(err);}
-          req.body.photo = image.url
-          const article = await Post.create(req.body);
+      const result = await cloudinary.uploader.upload(req.file.path);
+         let post = new Post({
+           title: req.body.title,
+           author: req.body.author,
+           desc: req.body.desc,
+           photo: result.secure_url
+
+         })
+         await post.save()
+          
+          
           fs.unlinkSync(req.file.path)
-          res.status(200).json({message: "Article creatred successfully", article});
-      });
+          res.status(200).json({message: "Article creatred successfully", post});
+      
   } catch (err) {
-      const errors = handleError(err)
-      res.status(409).json({message: errors});
+      
+      res.status(409).json({message: err});
   }
 }
 

@@ -38,20 +38,28 @@ export async function login(req, res){
 
     try {
         const user = await User.findOne({ username: req.body.username });
-        !user && res.status(400).json("Wrong credentials!");
+        !user && res.status(400).json("Wrong");
+
+      
     
-        const validated = await bcrypt.compare(req.body.password, user.password);
-        !validated && res.status(400).json("Wrong credentials!");
-    
-        // JSON WEB TOKEN FOR ATHENTICATING LOGIN
-        const token = createTokens(user._id);
-        res.cookie('jsonwebtoken',token, { httpOnly: true, maxAge:maxAge*1000 })
-    
-        // console.log(process.env.SEC_KEY)
-    
-        const { password, ...others } = user._doc;
-       
-        res.status(200).json({...others, accessToken});
+        let validated =await bcrypt.compare(req.body.password, user.password);
+        console.log("New password" +" "+req.body.password)
+        console.log("old password" +" "+user.password)
+        console.log("True or false?" +" "+validated)
+        console.log(user)
+        if (validated) {
+                    // JSON WEB TOKEN FOR ATHENTICATING LOGIN
+            const token = createTokens(user._id);
+            res.cookie('jsonwebtoken',token, { httpOnly: true, maxAge:maxAge*1000 })
+        
+            // console.log(process.env.SEC_KEY)
+        
+            const { password, ...others } = user._doc;
+        
+            res.status(200).json({...others, token});
+
+        }
+
       } catch (err) {
         res.status(500).json(err);
       }

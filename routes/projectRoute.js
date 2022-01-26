@@ -2,7 +2,7 @@ import { Router } from 'express';
 // import {validatePost} from '../middlewares/postValidation.js';
 const router = Router();
 import { allProjects, createProject, projectDetails, deleteProject, updateProject } from '../controllers/projectController.js';
-
+import authenticate from '../middlewares/authentication.js'
 
 import multer from 'multer'
 
@@ -21,15 +21,15 @@ const uploads = multer({ storage, fileFilter });
 router.get('/', allProjects);
 
 // Create Projects
-router.post('/', createProject);
+router.post('/', authenticate,createProject);
 
 // Post Details
 router.get('/:id',projectDetails);
 
 // Delete Projects
-router.delete('/:id', deleteProject);
+router.delete('/:id', authenticate,deleteProject);
 
 // Update Projects
-router.put('/:id', updateProject);
+router.put('/:id', authenticate,updateProject);
 
 export default router;

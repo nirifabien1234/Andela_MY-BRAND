@@ -52,7 +52,7 @@ export async function allComments(req, res){
   }
 }
 
-//comment Details
+//post Details
 export async  function commentDetails(req, res){
     try {
         const comment = await Comment.findById(req.params.id);
@@ -62,7 +62,7 @@ export async  function commentDetails(req, res){
       }
 }
 
-//Delete comment
+//Delete post
 export async function deleteComment(req, res){
     const id = req.params.id;
     await Comment.findByIdAndDelete(id)
@@ -73,7 +73,7 @@ export async function deleteComment(req, res){
         console.log(err);
       });
 }
-// // UPDATE A comment
+// // UPDATE A POST
 // export async function updateComment(req, res){
 //     const id = req.params.id;
 //     let updatedComment = {

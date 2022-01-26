@@ -5,7 +5,7 @@ export async function createMessage (req, res) {
     const newMessage = new Contact(req.body);
     
        await newMessage.save().then((result) => {
-         res.json(result)
+         res.json(newMessage)
         }).catch((err)=>{
       res.json({newMessage: err})
         })

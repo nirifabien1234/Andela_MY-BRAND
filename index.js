@@ -31,7 +31,7 @@ app.use(compression()); //Compress all routes
 // connect('mongodb://localhost/capstone2')
 //     .then(() => console.log('Connected to mongoDB'))
 //     .catch(err => console.error('Could not connect to MongoDBNamespace...', err));
-// Set up mongoose connection
+// // Set up mongoose connection
 
 const uri = String(process.env.MONGO_URL)
 connect(uri, {   
