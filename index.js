@@ -11,7 +11,7 @@ import profileRoute from './routes/profileRoute.js';
 import commentRoute from './routes/commentRoute.js';
 import serviceRoute from './routes/serviceRoute.js';
 import projectRoute from './routes/projectRoute.js';
-import * as cors from 'cors'
+import cors from 'cors'
 
 // import { verifyToken, verifyTokenAndAuthorization, verifyTokenAndAdmin} from './middlewares/verifyToken.js';
 // add this line below the other import statements
