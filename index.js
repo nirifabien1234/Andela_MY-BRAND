@@ -11,6 +11,7 @@ import profileRoute from './routes/profileRoute.js';
 import commentRoute from './routes/commentRoute.js';
 import serviceRoute from './routes/serviceRoute.js';
 import projectRoute from './routes/projectRoute.js';
+import * as cors from 'cors'
 
 // import { verifyToken, verifyTokenAndAuthorization, verifyTokenAndAdmin} from './middlewares/verifyToken.js';
 // add this line below the other import statements
@@ -24,6 +25,10 @@ const app = express()
 app.use(json());
 app.use(cookieParser());
 app.use(helmet());
+app.use(cors({
+    origin: '*',
+    methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH']
+}));
 // add this below app.use(helmet())
 app.use(compression()); //Compress all routes
 // dotenv.config()
