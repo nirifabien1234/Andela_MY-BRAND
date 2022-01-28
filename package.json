@@ -34,7 +34,8 @@
   },
   "scripts": {
     "build": "babel index.js -d dist",
-    "start": "node index.js"
+    "start": "node index.js",
+    "dev": "nodemon --exec node ./index.js"
   },
   "keywords": [],
   "author": "",

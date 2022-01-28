@@ -33,17 +33,17 @@ app.use(cors({
 app.use(compression()); //Compress all routes
 // dotenv.config()
 
-// connect('mongodb://localhost/capstone2')
-//     .then(() => console.log('Connected to mongoDB'))
-//     .catch(err => console.error('Could not connect to MongoDBNamespace...', err));
-// // Set up mongoose connection
+connect('mongodb://localhost/capstone2')
+    .then(() => console.log('Connected to mongoDB'))
+    .catch(err => console.error('Could not connect to MongoDBNamespace...', err));
+// Set up mongoose connection
 
-const uri = String(process.env.MONGO_URL)
-connect(uri, {   
-    useUnifiedTopology: true,
-    useNewUrlParser: true,
-}).then(console.log("Connected to MongoDB")).
-catch((err) => console.log(err));
+// const uri = String(process.env.MONGO_URL)
+// connect(uri, {   
+//     useUnifiedTopology: true,
+//     useNewUrlParser: true,
+// }).then(console.log("Connected to MongoDB")).
+// catch((err) => console.log(err));
 
 app.listen(process.env.PORT || 3000)
 

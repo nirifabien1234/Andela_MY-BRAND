@@ -38,15 +38,12 @@ export async function login(req, res){
 
     try {
         const user = await User.findOne({ email: req.body.email });
-        !user && res.status(400).json("Wrong");
+        !user && res.status(400).json({message: "Wrong email detected!"});
 
-      
-    
         let validated = await bcrypt.compare(req.body.password, user.password);
-        // console.log("New password" +" "+req.body.password)
-        // console.log("old password" +" "+user.password)
-        // console.log("True or false?" +" "+validated)
-        // console.log(user)
+        console.log(user)
+        console.log(validated)
+   
         if (validated) {
                     // JSON WEB TOKEN FOR ATHENTICATING LOGIN
             const token = createTokens(user._id);
@@ -58,6 +55,10 @@ export async function login(req, res){
         
             res.status(200).json({...others, token});
 
+        } else {
+            res.status(200).json({
+                message: "Incorrect email or password"
+            })
         }
 
       } catch (err) {
