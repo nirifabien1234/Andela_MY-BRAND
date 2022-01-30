@@ -5,9 +5,9 @@ import authenticate from '../middlewares/authentication.js'
 const router = Router();
 import uploads from '../helpers/multer.js'
 
-router.post('/',authenticate,validateProfile,uploads.single('image'), createProfile);
-router.post('/:id', authenticate,validateProfile, updateProfile);
-router.get('/:id', authenticate,profileDetails);
-router.get('/:id', authenticate,deleteProfile);
+router.post('/',validateProfile,uploads.single('image'), createProfile);
+router.post('/:id', validateProfile, updateProfile);
+router.get('/:id', profileDetails);
+router.get('/:id', deleteProfile);
 
 export default router;

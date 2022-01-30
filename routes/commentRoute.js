@@ -5,16 +5,16 @@ const router = Router();
 import { allComments, createComment, commentDetails, deleteComment } from '../controllers/commentController.js';
 
 // All Projects
-router.get('/', authenticate, allComments);
+router.get('/',  allComments);
 
 // Create Projects
-router.post('/', authenticate, createComment);
+router.post('/',  createComment);
 
 // Post Details
-router.get('/:id',authenticate, commentDetails);
+router.get('/:id', commentDetails);
 
 // Delete Projects
-router.delete('/:id', authenticate, deleteComment);
+router.delete('/:id',  deleteComment);
 
 
 export default router;

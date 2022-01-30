@@ -8,15 +8,15 @@ import { allCategory, createCategory, categoryDetails, deleteCategory, updateCat
 router.get('/', allCategory);
 
 // Create Categories
-router.post('/', authenticate, createCategory);
+router.post('/',  createCategory);
 
 // Post Details
-router.get('/:id',authenticate, categoryDetails);
+router.get('/:id', categoryDetails);
 
 // Delete Categories
-router.delete('/:id', authenticate, deleteCategory);
+router.delete('/:id',  deleteCategory);
 
 // Update Categories
-router.put('/:id',authenticate, updateCategory);
+router.put('/:id', updateCategory);
 
 export default router;

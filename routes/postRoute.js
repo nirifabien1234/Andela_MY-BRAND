@@ -15,9 +15,9 @@ router.post('/',uploads.single('image'), createPost);
 router.get('/:id',postDetails);
 
 // Delete Posts
-router.delete('/:id', authenticate,deletePost);
+router.delete('/:id', deletePost);
 
 // Update Posts
-router.put('/:id',authenticate, validatePost, updatePost);
+router.put('/:id', validatePost, updatePost);
 
 export default router;

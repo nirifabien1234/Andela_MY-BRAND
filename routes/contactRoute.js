@@ -5,16 +5,16 @@ import authenticate from '../middlewares/authentication.js'
 import { allMessages, createMessage, messageDetails, deleteMessage } from '../controllers/contactController.js';
 
 // All Messages
-router.get('/', authenticate, allMessages);
+router.get('/',  allMessages);
 
 // Create Messages
 router.post('/',validateContact, createMessage);
 
 // Post Details
-router.get('/:id',authenticate,messageDetails);
+router.get('/:id',messageDetails);
 
 // Delete Messages
-router.delete('/:id',authenticate, deleteMessage);
+router.delete('/:id', deleteMessage);
 
 
 export default router;

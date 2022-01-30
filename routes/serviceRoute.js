@@ -10,15 +10,15 @@ import uploads from '../helpers/multer.js'
 router.get('/', allServices);
 
 // Create Projects
-router.post('/', authenticate, uploads.single('image'), createService);
+router.post('/',  uploads.single('image'), createService);
 
 // Post Details
 router.get('/:id',serviceDetails);
 
 // Delete Projects
-router.delete('/:id', authenticate,deleteService);
+router.delete('/:id', deleteService);
 
 // Update Projects
-router.put('/:id', authenticate,updateService);
+router.put('/:id', updateService);
 
 export default router;
