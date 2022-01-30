@@ -8,7 +8,7 @@ import { allComments, createComment, commentDetails, deleteComment } from '../co
 router.get('/', authenticate, allComments);
 
 // Create Projects
-router.post('/', createComment);
+router.post('/', authenticate, createComment);
 
 // Post Details
 router.get('/:id',authenticate, commentDetails);

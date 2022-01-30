@@ -12,6 +12,7 @@ import commentRoute from './routes/commentRoute.js';
 import serviceRoute from './routes/serviceRoute.js';
 import projectRoute from './routes/projectRoute.js';
 import cors from 'cors'
+import  bodyParser from 'body-parser'
 
 // import { verifyToken, verifyTokenAndAuthorization, verifyTokenAndAdmin} from './middlewares/verifyToken.js';
 // add this line below the other import statements
@@ -23,27 +24,34 @@ dotenv.config()
 
 const app = express()
 app.use(json());
-app.use(cookieParser());
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.json({ limit: "50mb" }));
+app.use(
+  bodyParser.urlencoded({
+    limit: "50mb",
+    extended: true,
+    parameterLimit: 1000000,
+  })
+);
+
 app.use(helmet());
-app.use(cors({
-    origin: '*',
-    methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH']
-}));
+app.use(cors());
 // add this below app.use(helmet())
 app.use(compression()); //Compress all routes
 // dotenv.config()
 
-connect('mongodb://localhost/capstone2')
-    .then(() => console.log('Connected to mongoDB'))
-    .catch(err => console.error('Could not connect to MongoDBNamespace...', err));
+// connect('mongodb://localhost/capstone2')
+//     .then(() => console.log('Connected to mongoDB'))
+//     .catch(err => console.error('Could not connect to MongoDBNamespace...', err));
 // Set up mongoose connection
 
-// const uri = String(process.env.MONGO_URL)
-// connect(uri, {   
-//     useUnifiedTopology: true,
-//     useNewUrlParser: true,
-// }).then(console.log("Connected to MongoDB")).
-// catch((err) => console.log(err));
+const uri = String(process.env.MONGO_URL)
+console.log(uri)
+connect(uri, {   
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+}).then(console.log("Connected to MongoDB")).
+catch((err) => console.log(err));
 
 app.listen(process.env.PORT || 3000)
 

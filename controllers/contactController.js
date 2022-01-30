@@ -2,8 +2,9 @@ import Contact from '../models/Contact.js';
 
 //Create contact
 export async function createMessage (req, res) {
+
     const newMessage = new Contact(req.body);
-    
+    console.log(newMessage)
        await newMessage.save().then((result) => {
          res.json(newMessage)
         }).catch((err)=>{

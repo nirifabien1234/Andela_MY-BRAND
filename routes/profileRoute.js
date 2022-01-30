@@ -3,8 +3,9 @@ import {validateProfile} from '../middlewares/profileValidation.js';
 import { createProfile, updateProfile, deleteProfile, profileDetails } from '../controllers/profileController.js';
 import authenticate from '../middlewares/authentication.js'
 const router = Router();
+import uploads from '../helpers/multer.js'
 
-router.post('/',authenticate,validateProfile, createProfile);
+router.post('/',authenticate,validateProfile,uploads.single('image'), createProfile);
 router.post('/:id', authenticate,validateProfile, updateProfile);
 router.get('/:id', authenticate,profileDetails);
 router.get('/:id', authenticate,deleteProfile);

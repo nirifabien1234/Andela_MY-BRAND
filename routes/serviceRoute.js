@@ -4,24 +4,13 @@ const router = Router();
 import { allServices, createService, serviceDetails, deleteService, updateService } from '../controllers/serviceController.js';
 import authenticate from '../middlewares/authentication.js'
 
-import multer from 'multer'
-
-const storage = multer.diskStorage({});
-
-const fileFilter = (req, file, cb) => {
-  if (file.mimetype.startsWith('image')) {
-    cb(null, true);
-  } else {
-    cb('invalid image file!', false);
-  }
-};
-const uploads = multer({ storage, fileFilter });
+import uploads from '../helpers/multer.js'
 
 // All Projects
 router.get('/', allServices);
 
 // Create Projects
-router.post('/', authenticate,createService);
+router.post('/', authenticate, uploads.single('image'), createService);
 
 // Post Details
 router.get('/:id',serviceDetails);

@@ -8,10 +8,12 @@ import cloudinary from '../helpers/imageUpload.js';
 
 
 export async function  createService (req, res){
+  console.log(req.body)
+  console.log(req.file)
   try {
       cloudinary.uploader.upload(req.file.path, { tags: 'Service_photo' },async function (err, image) {
           if (err) {console.warn(err);}
-          req.body.ServicePic = image.url
+          req.body.servicePic = image.url
           const service = await Service.create(req.body);
           fs.unlinkSync(req.file.path)
           res.status(200).json({message: "Service creatred successfully", service});

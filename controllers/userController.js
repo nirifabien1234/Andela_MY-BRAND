@@ -35,13 +35,15 @@ export async function register(req, res){
 
 //User login
 export async function login(req, res){
-
-    try {
+    
+    // try {
         const user = await User.findOne({ email: req.body.email });
-        !user && res.status(400).json({message: "Wrong email detected!"});
+        if(!user) return res.status(400).json({message: "Wrong email detected!"});
+        console.log(user)
+            
+        
 
         let validated = await bcrypt.compare(req.body.password, user.password);
-        console.log(user)
         console.log(validated)
    
         if (validated) {
@@ -50,10 +52,12 @@ export async function login(req, res){
             res.cookie('jsonwebtoken',token, { httpOnly: true, maxAge:maxAge*1000 })
         
             // console.log(process.env.SEC_KEY)
+            console.log(token)
         
             const { password, ...others } = user._doc;
         
             res.status(200).json({...others, token});
+            
 
         } else {
             res.status(200).json({
@@ -61,9 +65,9 @@ export async function login(req, res){
             })
         }
 
-      } catch (err) {
-        res.status(500).json(err);
-      }
+    //   }catch (err) {
+    //     res.status(500).json(err);
+    //   }
 
 }
 
